@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function home()
     {
         $articles = Article::orderBy('id' , 'desc')->get();
-        return view('index');
+        return view('index', compact('articles'));
     }
 
     public function about()
