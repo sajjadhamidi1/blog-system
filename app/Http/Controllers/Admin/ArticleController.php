@@ -32,22 +32,24 @@ class ArticleController extends Controller
             'body' => $validate_data['body'],
         ]);
 
-        return redirect('/admin/articles/create');
+        return redirect('/admin/articles');
+        
     }
 
 
-    public function edit($article)
-    {
-        return $article;
+    public function edit(Article $article)
+    {  
 
-        return view('admin.articles.edit' , [
+        return view('/admin.articles.edit' , [
             'article' => $article
         ]);
+
     }
 
     public function update(ArticleRequest $request,Article $article)
     {
         $validate_data = $request->validated();
+        
 
         $article->update($validate_data);
 

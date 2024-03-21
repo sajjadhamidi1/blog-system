@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\Article;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -14,8 +15,9 @@ class HomeController extends Controller
     }
     public function home()
     {
+        $user=User::class;
         $articles = Article::orderBy('id' , 'desc')->get();
-        return view('index', compact('articles'));
+        return view('index', compact('articles','user'));
     }
 
     public function about()
