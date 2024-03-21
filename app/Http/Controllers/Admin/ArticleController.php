@@ -1,19 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\Article;
+
+use App\models\Article;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class ArticleController extends Controller
 {
-
-    public function __invoke()
-    {
-        // ...
-    }
     public function index()
     {
         return view('admin.articles.index' , [
@@ -26,18 +22,9 @@ class ArticleController extends Controller
         return view('admin.articles.create');
     }
 
-    public function store( )
+    public function store(ArticleRequest $request)
     {
-        $validate_data = Validator::make(request()->all() , [
-            'title' => 'required|min:10|max:50',
-            'body' => 'required'
-        ])->validated();
-
-        // $validate_data = $request->validated();        
-
-       
-        
-
+        $validate_data = $request->validated();
 
         Article::create([
             'title' => $validate_data['title'],
@@ -49,35 +36,26 @@ class ArticleController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit($article)
     {
-        $article = Article::findOrFail($id);
+        return $article;
 
         return view('admin.articles.edit' , [
             'article' => $article
         ]);
     }
 
-    public function update()
+    public function update(ArticleRequest $request,Article $article)
     {
-        $validate_data = Validator::make(request()->all() , [
-            'title' => 'required|min:10|max:50',
-            'body' => 'required'
-        ])->validated();
-
-        $article = Article::findOrFail($id);
-
-        // $validate_data = $request->validated();
+        $validate_data = $request->validated();
 
         $article->update($validate_data);
 
         return back();
     }
 
-    public function delete($id)
+    public function delete(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         $article->delete();
 
         return back();
