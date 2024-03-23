@@ -13,7 +13,7 @@
         <div class="card-body">
             <h2 class="card-title">{{$article->title}}</h2>
             <p class="card-text">{{$article->body}}</p>
-            {{-- <a href="#" class="btn btn-primary">Read More &rarr;</a> --}}
+            <a href="articles/{{$article->slug}}" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
             Posted on : {{$article->created_at->format('j-F-Y')}}
