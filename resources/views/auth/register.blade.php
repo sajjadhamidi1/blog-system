@@ -7,10 +7,16 @@
             <div class="col-lg-12 login-key">
                 <i class="fa fa-user" aria-hidden="true"></i>
             </div>
+            <div class="col-lg-12 loginbttm">
+              
             <div class="col-lg-12 login-title">
                 REGISTER
             </div>
-
+            @include('layouts.alert')
+            {{--error--}}
+            <div class="col-lg-12"  >
+            @include('layouts.validation-errors')
+        </div><br>
             <div class="col-lg-12 login-form">
                 <div class="col-lg-12 login-form">
                     <form>
@@ -36,10 +42,7 @@
                             <input type="password" class="form-control" i>
                         </div>
                         
-                        <div class="col-lg-12 loginbttm">
-                            <div class="col-lg-6 login-btm login-text">
-                                <!-- Error Message -->
-                            </div>
+                      
                             <div class="col-lg-6 login-btm login-button">
                                 <button type="submit" class="btn btn-outline-primary">Register</button>
                             </div>

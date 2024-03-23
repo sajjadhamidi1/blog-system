@@ -10,7 +10,10 @@
             <div class="col-lg-12 login-title">
                 ADMIN PANEL
             </div>
-
+            @include('layouts.alert')
+            <div class="col-lg-12"  >
+                @include('layouts.validation-errors')
+            </div><br>
             <div class="col-lg-12 login-form">
                 <div class="col-lg-12 login-form">
                     <form>

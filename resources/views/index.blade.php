@@ -1,6 +1,5 @@
 @extends('layouts.master')
-
-
+@section('title','Home Page')
 @section('content')
     <h1 class="my-4">Articles
         

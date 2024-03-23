@@ -1,10 +1,12 @@
 @extends('layouts.master')
-
-
+@section('title','contact us')
 @section('content')
-    <h2>About Page</h2>
+    <div class="bg-light continer p-4 h-100">
+    <h2 class="text-center p-4">About Page</h2>
     <!-- /.row -->
-@endsection
+    <p>I am a 27-year-old backend PHP programmer specializing in Laravel. With expertise in PHP backend development, I craft efficient and scalable solutions using Laravel framework. Passionate about creating robust applications, I continuously enhance my skills to stay at the forefront of technological advancements.</p>
+</div>
+    @endsection
 
 @section('sidebar')
     @parent
