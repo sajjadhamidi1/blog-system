@@ -42,3 +42,9 @@ Route::prefix('auth')->namespace('auth')->group(function(){
 
     
 });
+
+
+Route::middleware("auth:api")->group(function () {
+    // Show user profile
+    Route::get('profile', [LoginController::class, 'profile']);
+});
