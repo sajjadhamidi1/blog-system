@@ -16,14 +16,15 @@
             </div><br>
             <div class="col-lg-12 login-form">
                 <div class="col-lg-12 login-form">
-                    <form>
+                    <form method="POST" action="/auth/login">
+                        @csrf
                         <div class="form-group">
                             <label class="form-control-label">USERNAME</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="email" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="form-control-label">PASSWORD</label>
-                            <input type="password" class="form-control" i>
+                            <input type="password" name="password" class="form-control" i>
                         </div>
 
                         <div class="col-lg-12 loginbttm">

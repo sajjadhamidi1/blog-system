@@ -13,7 +13,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\ArticleFrontController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\AuthController;
 
 
 
@@ -34,7 +34,11 @@ Route::prefix('admin')->namespace('Admin')->group(function() {
 
 Route::prefix('auth')->namespace('auth')->group(function(){
     
-    Route::get('/login',[AuthController::class,'login']);
-    Route::get('/register',[AuthController::class,'register']);
+    Route::get('/register',[AuthController::class,'ShowRegesisterForm']);
+    Route::get('/login',[AuthController::class,'ShowLoginForm']);
+    route::post('/register',[AuthController::class,'register']);
+    route::post('/login',[AuthController::class,'login']);
+
+
     
 });
