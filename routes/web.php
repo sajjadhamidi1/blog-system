@@ -18,11 +18,11 @@ use App\Http\Controllers\Auth\AuthController;
 
 
 Route::get('/',[HomeController::class,'home'])->name('home');
-Route::get('/articles/{articleSlug}',[ArticleFrontController::class,'single'])->name('articles');
+Route::get('/articles/{articleSlug}',[ArticleController::class,'single'])->name('articles');
 Route::get('/about', [HomeController::class,'about'])->name('about');
 Route::get('/contact', [HomeController::class,'contact'])->name('contact');
 
-Route::prefix('admin')->namespace('Admin')->group(function() {
+Route::prefix('admin')->namespace('Admin')->middleware(['auth'])->group(function() {
     Route::get('/articles' , [ArticleController::class,'index'])->name('adminarticles');
     Route::get('/articles/create' , [ArticleController::class,'create'])->name('createarticle');
     Route::post('/articles/create',[ArticleController::class,'store'])->name('storearticle');
@@ -35,9 +35,11 @@ Route::prefix('admin')->namespace('Admin')->group(function() {
 Route::prefix('auth')->namespace('auth')->group(function(){
     
     Route::get('/register',[AuthController::class,'ShowRegesisterForm']);
-    Route::get('/login',[AuthController::class,'ShowLoginForm']);
+    Route::get('/login',[AuthController::class,'ShowLoginForm'])->name('login');
     route::post('/register',[AuthController::class,'register']);
     route::post('/login',[AuthController::class,'login']);
+    route::post('/logout',[AuthController::class,'logout'])->name('logout');
+    
 
 
     

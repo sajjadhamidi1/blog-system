@@ -48,11 +48,6 @@ class AuthController extends Controller{
     ]);
 
     $user->save();
-    return response()->json([
-        'message' => 'user has ben register successful!'
-    ], 201);
-
-    return redirect()->route('home');
 
 
 
@@ -60,7 +55,7 @@ class AuthController extends Controller{
 
     }
 
-  public function login(Request $request){
+  public function login(Request $request,){
   
     $validate=Validator::make($request->all(),[
 
@@ -80,44 +75,21 @@ class AuthController extends Controller{
         return response()->json([
             'message' => 'unauthorized'
         ], 401);
-    }
+    }else{
         $user = Auth::user();
-
         $tokenResult = $user->createToken('Login Token');
         $token = $tokenResult->token;
+        return view('auth.profile');
 
-
-        return response()->json([
-            'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
-            'expires_at' => Carbon::parse(
-                $tokenResult->token->expires_at
-            )->toDateTimeString(),
-
-        ], 200);
-
-
-
-
-        
-
-
-
-   
-
-
-
+    }
 
 }
 
-//نمایش پروفایل
-public function profile()
-{
-    $user = Auth::user();
 
-    return response()->json([
-        'user' => $user
-    ], 200);
-  }
-   
+public function logout(User $user,Request $request){
+    $token=$request->user()->token;
+    // $token->revoke();
+    // return redirect('logout');
+}
+
 }

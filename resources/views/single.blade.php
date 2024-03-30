@@ -10,6 +10,9 @@
         <div class="card mb-4">
             {{-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> --}}
             <div class="card-body">
+               
+                <img src="{{asset(''.$article->image)}} }}" alt="{{ $article->title }}">
+
                 <h2 class="card-title">{{ $article->title}}</h2>
                 <p class="card-text">{{ $article->body }}</p>
             </div>

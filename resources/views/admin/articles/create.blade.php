@@ -12,11 +12,14 @@
             </ul>
         </div>
     @endif
-    <form action="/admin/articles/create" method="post">
+    <form action="/admin/articles/create" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">title :</label>
             <input type="text" name="title" class="form-control">
+        </div>
+        <div class="form-group">
+        <input type="file" name="image" id="image" class="form-control-file" required>
         </div>
         <div class="form-group">
             <label for="body">body :</label>
