@@ -87,9 +87,11 @@ class AuthController extends Controller{
 
 
 public function logout(User $user,Request $request){
-    $token=$request->user()->token;
-    // $token->revoke();
-    // return redirect('logout');
+    // $token=$request->user()->token;
+    // // $token->revoke();
+    // // return redirect('logout');
+    Auth::logout();
+    return redirect()->back();
 }
 
 }
