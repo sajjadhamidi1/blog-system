@@ -14,7 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\ArticleFrontController;
 use App\Http\Controllers\Auth\AuthController;
-
+use App\Http\Controllers\CommentController;
 
 
 Route::get('/',[HomeController::class,'home'])->name('home');
@@ -50,3 +50,5 @@ Route::middleware("auth:api")->group(function () {
     // Show user profile
     Route::get('profile', [LoginController::class, 'profile']);
 });
+
+Route::post('/articles/{article}/comments', [CommentController::class,'store'])->name('comments.store');

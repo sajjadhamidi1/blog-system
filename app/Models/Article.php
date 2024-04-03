@@ -5,7 +5,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-
+use App\models\Comment;
 class Article extends Model
 {
     use HasFactory;
@@ -33,6 +33,10 @@ class Article extends Model
        
     }
     
+
     
+    public function comments(){
+        return $this->morphMany(Comment::class,'commentable');
+    }
 
 }

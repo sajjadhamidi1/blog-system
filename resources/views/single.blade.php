@@ -21,4 +21,5 @@
                 <a href="#">Start Bootstrap</a>
             </div>
         </div>
+        @include('comments')
 @endsection
