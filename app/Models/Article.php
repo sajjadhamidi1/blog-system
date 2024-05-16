@@ -9,32 +9,31 @@ use App\models\Comment;
 class Article extends Model
 {
     use HasFactory;
+    use Sluggable;
     protected $fillable=[
         'title',
         'slug',
         'image',
         'body',
         'image_url'
-    ]; 
+    ];
 
-    public function getImageUrlAttribute()
+
+
+    public function sluggable(): array
     {
-        return Storage::url('articles/' . $this->image);
-    }
 
-    public function sluggable(){
-        
             return [
                 'slug' => [
                     'source' => 'title'
                 ]
-            ];  
-        
-       
-    }
-    
+            ];
 
-    
+
+    }
+
+
+
     public function comments(){
         return $this->morphMany(Comment::class,'commentable');
     }

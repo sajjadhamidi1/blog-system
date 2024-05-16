@@ -1,18 +1,18 @@
 body{
-    padding: 3rem;
+
 }
 
 /*profile */
 .dropdown-menu {
-    
+
     padding: .7rem 0rem;
     font-size: .875rem;
     line-height: 22px;
-    color: #5c5776;    
+    color: #5c5776;
     border: none;
     box-shadow: 0 10px 30px 0 rgba(31, 45, 61, 0.1);
     border-radius: .5rem;
-      
+
 }
 .dropdown-menu i{
     font-size: 25px !important;
@@ -51,7 +51,7 @@ body{
             }
 }
 @media (min-width: 990px){
-  
+
     .dropright-lg {
         position: relative;
    .dropdown-menu{
@@ -66,14 +66,14 @@ body{
 .dropdown-toggle::after {
     display: inline-block;
     margin-left: .255em;
-    vertical-align: .255em;    
+    vertical-align: .255em;
     content: ">";
     border-top: 0rem;
     border-right: 0rem;
     border-bottom: 0;
     border-left: 0rem;
-    
-   
+
+
 }
 
 .avatar i{
@@ -83,7 +83,7 @@ body{
 .avatar-md {
   width: 56px;
   height: 56px;
-  
+
 }
 
 
