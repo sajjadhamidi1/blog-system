@@ -1,12 +1,33 @@
 @extends('layouts.master')
 @section('content')
     <h2 class="text-3xl text-center font-extrabold py-3">All Article</h2>
-    <div class="p-6">
-    <a href="/" class="  btn bg-orange-500 text-white p-3 rounded">Show Blog</a>
+
+    @if(session('login'))
+    <div class=" bg-green-100 border border-green-400 text-green-500 my-5 px-4 py-3 rounded">
+        <strong class="font-bold">Login</strong>
+        <span class="block sm:inline">{{session('login')}}</span>
     </div>
-    <form action="/admin/articles/create"  method="GET" class="p-6">
-    <button class="btn bg-green-500 text-white py-3 px-2 rounded">New Article</button>
-    </form>
+        @endif
+
+    <div class="flex justify-center align-items-center gap-3  flex-row  ">
+
+    <div>
+    <button onclick="window.location.href='/';" class="  btn bg-orange-500 text-white py-2 px-4  rounded">Show Blog</button>
+    </div>
+
+    <div>
+        <form action="{{route('logout')}} " method="post">
+            @csrf
+            <button class="btn bg-red-500 text-white  py-2 px-4 rounded">Logout</button>
+        </form>
+    </div>
+
+    <div>
+        <form action="/admin/articles/create"  method="GET" >
+            <button class="btn bg-green-500 py-2 px-4 text-white  rounded">New Article</button>
+        </form>
+    </div>
+    </div>
     <div class="container  px-5 py-3">
     <table class="table-fixed min-w-full  " >
         <thead></thead>

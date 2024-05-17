@@ -23,7 +23,7 @@ class AuthController extends Controller{
 
 
     public function register(Request $request){
-           
+
         $validate = Validator::make($request->all(), [
             'name' => ['required', 'string'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
@@ -33,7 +33,7 @@ class AuthController extends Controller{
 
   // If validator has ben faild
     if ($validate->fails()) {
-    
+
         return response()->json([
         'message' => $validate->errors()->first()
     ], 400);
@@ -49,14 +49,14 @@ class AuthController extends Controller{
 
     $user->save();
 
-
+    return redirect(route('login'));
 
 }
 
     }
 
   public function login(Request $request,){
-  
+
     $validate=Validator::make($request->all(),[
 
         'email' => ['email', 'required'],
@@ -70,7 +70,7 @@ class AuthController extends Controller{
 
     $cerdinentals = request(['email', 'password']);
 
-    //اگر کاربر وجود نداشت
+
     if (!Auth::attempt($cerdinentals)) {
         return response()->json([
             'message' => 'unauthorized'
@@ -79,7 +79,7 @@ class AuthController extends Controller{
         $user = Auth::user();
         $tokenResult = $user->createToken('Login Token');
         $token = $tokenResult->token;
-        return view('auth.profile');
+        return  redirect('/admin/articles')->with('login','You have successfully logged in');
 
     }
 
@@ -87,11 +87,11 @@ class AuthController extends Controller{
 
 
 public function logout(User $user,Request $request){
-    // $token=$request->user()->token;
-    // // $token->revoke();
-    // // return redirect('logout');
+    $token=$request->user()->token;
+     $token->revoke();
     Auth::logout();
-    return redirect()->back();
+    return redirect('/');
 }
+
 
 }
